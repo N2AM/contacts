@@ -1,0 +1,36 @@
+<form [formGroup]="contactForm" (ngSubmit)="add()">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="E-mail" formControlName="email" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Phone" formControlName="phone" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Mobile" formControlName="mobile" />
+    </mat-form-field>
+  </div>
+  <button type="submit" [disabled]="!contactForm.valid">Add</button>
+</form>
+<button mat-button (click)="list()">List contacts</button>
+<div *ngIf="listContacts">
+  <ul>
+    <li *ngFor="let contact of contacts">
+      {{ contact.name }}
+      <button mat-button color="primary" (click)="edit(contact.id)">Edit</button>
+
+      <button mat-button color="accent" (click)="delete(contact.id)">
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>
