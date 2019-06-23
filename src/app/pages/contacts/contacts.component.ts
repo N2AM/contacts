@@ -13,8 +13,8 @@ import {map, startWith} from 'rxjs/operators';
 export class ContactsComponent implements OnInit {
   contacts: Contact[];
   contact: Contact;
-  stateCtrl = new FormControl();
-  filteredStates: Observable<Contact[]>;
+  contactCtrl = new FormControl();
+  filteredcontacts: Observable<Contact[]>;
     listContacts: boolean = false;
   searchText;
   editId: number;
@@ -32,10 +32,10 @@ export class ContactsComponent implements OnInit {
     mobile: ["", Validators.required]
   });
   constructor(private formBuilder: FormBuilder) {
-    this.filteredStates = this.stateCtrl.valueChanges
+    this.filteredcontacts = this.contactCtrl.valueChanges
       .pipe(
         startWith(''),
-        map(state => state ? this._filterStates(state) : this.contacts.slice())
+        map(contact => contact ? this._filtercontacts(contact) : this.contacts.slice())
       );
   }
 
@@ -82,9 +82,9 @@ export class ContactsComponent implements OnInit {
     console.log(id);
     this.contacts = this.contacts.filter(v => v.id !== id);
   }
-  private _filterStates(value: string): Contact[] {
+  private _filtercontacts(value: string): Contact[] {
     const filterValue = value.toLowerCase();
 
-    return this.contacts.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
+    return this.contacts.filter(contact => contact.name.toLowerCase().indexOf(filterValue) === 0);
   }
 }

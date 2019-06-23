@@ -24,8 +24,8 @@
 <button mat-button (click)="list()">List contacts</button>
 <div class="flex">
 <div class='half-width' *ngIf="listContacts">
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
+    <form >
+        <mat-form-field>
             <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
