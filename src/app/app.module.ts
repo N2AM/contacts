@@ -9,6 +9,7 @@ import { ReactiveFormsModule, NgModel } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -32,7 +33,8 @@ import { SearchPipe } from './core/pipes/search.pipe';
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatAutocompleteModule
   ],
   providers: [NgModel,{
     provide: HTTP_INTERCEPTORS,
