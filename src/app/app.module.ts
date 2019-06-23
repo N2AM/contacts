@@ -5,30 +5,36 @@ import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, NgModel } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+
+
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpRequestsInterceptor } from './core/interceptors/http.interceptor';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { SearchPipe } from './core/pipes/search.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactsComponent
+    ContactsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [{
+  providers: [NgModel,{
     provide: HTTP_INTERCEPTORS,
     useClass: HttpRequestsInterceptor,
     multi: true

@@ -23,8 +23,10 @@
 </form>
 <button mat-button (click)="list()">List contacts</button>
 <div *ngIf="listContacts">
+    <input [(ngModel)]="searchText" placeholder="search text goes here">
+
   <ul>
-    <li *ngFor="let contact of contacts">
+    <li *ngFor="let contact of contacts | filter : searchText">
       {{ contact.name }}
       <button mat-button color="primary" (click)="edit(contact.id)">Edit</button>
 
